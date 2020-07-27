@@ -7,8 +7,10 @@ class MessagesController < ApplicationController
   
   def create
     @room = Room.find(params[:room_id])
+    # binding.pry
     @message = @room.messages.new(message_params)
     @message.save
+    redirect_to room_messages_path(@room)
   end
 
   private
